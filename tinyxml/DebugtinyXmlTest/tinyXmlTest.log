@@ -1,0 +1,31 @@
+﻿Build started 12/17/2013 4:05:22 PM.
+     1>Project "C:\Users\clovis\cg\tinyxml\tinyXmlTest.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D TUNE /D _CRT_SECURE_NO_WARNINGS /D _VC80_UPGRADE=0x0600 /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\\" /Fd"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\vc100.pdb" /FR"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\\" /Gd /TP /analyze- /errorReport:prompt xmltest.cpp
+         xmltest.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.embed.manifest.res" C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.lib" /MACHINE:X86 C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.embed.manifest.res
+         C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\xmltest.obj
+         C:\Users\clovis\cg\tinyxml\Debugtinyxml\tinyxml.lib
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.embed.manifest" /manifest C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.intermediate.manifest
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.embed.manifest.res" C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest_manifest.rc 
+       LinkEmbedManifest:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.lib" /MACHINE:X86 C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe.embed.manifest.res
+         C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\xmltest.obj
+         C:\Users\clovis\cg\tinyxml\Debugtinyxml\tinyxml.lib
+         tinyXmlTest.vcxproj -> C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe
+       BscMake:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\bscmake.exe /nologo /o"C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.bsc" C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\xmltest.sbr
+       FinalizeBuildStatus:
+         Deleting file "C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.unsuccessfulbuild".
+         Touching "C:\Users\clovis\cg\tinyxml\DebugtinyXmlTest\tinyXmlTest.lastbuildstate".
+     1>Done Building Project "C:\Users\clovis\cg\tinyxml\tinyXmlTest.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.11

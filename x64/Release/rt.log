@@ -1,0 +1,37 @@
+﻿Build started 12/14/2013 11:12:13 PM.
+     1>Project "C:\Users\clovis\cg\rt.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\rt.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I. /Zi /nologo /W3 /WX- /O2 /D WIN32 /D NDEBUG /D _CONSOLE /Gm- /EHsc /MD /Zp1 /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt Main.cpp /D"_CRT_SECURE_NO_DEPRECATE" 
+         Main.cpp
+         Note: including lib: glut32.lib
+         
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"x64\Release\rt.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:./lib glut64.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMT /MANIFEST /ManifestFile:"x64\Release\rt.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\clovis\cg\x64\Release\rt.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"x64\Release\rt.lib" /MACHINE:X64 x64\Release\BoundingBox.obj
+         x64\Release\BVH.obj
+         x64\Release\Camera.obj
+         x64\Release\Color.obj
+         x64\Release\GLImage.obj
+         x64\Release\GLRenderer.obj
+         x64\Release\Main.obj
+         x64\Release\Material.obj
+         x64\Release\MeshSweeper.obj
+         x64\Release\RayTracer.obj
+         x64\Release\Renderer.obj
+         x64\Release\Scene.obj
+         x64\Release\Sweeper.obj
+         x64\Release\TriangleMesh.obj
+         x64\Release\TriangleMeshShape.obj
+         x64\Release\Viewport.obj
+         rt.vcxproj -> C:\Users\clovis\cg\x64\Release\rt.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"x64\Release\rt.exe;#1" /manifest x64\Release\rt.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\rt.unsuccessfulbuild".
+         Touching "x64\Release\rt.lastbuildstate".
+     1>Done Building Project "C:\Users\clovis\cg\rt.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.40

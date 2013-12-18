@@ -1,0 +1,35 @@
+﻿  Viewport.cpp
+  TriangleMeshShape.cpp
+  TriangleMesh.cpp
+  Sweeper.cpp
+  Scene.cpp
+  Renderer.cpp
+  RayTracer.cpp
+  Note: including lib: glut32.lib
+  
+  pugixml.cpp
+  MeshSweeper.cpp
+  Material.cpp
+  Main.cxx
+  Note: including lib: glut32.lib
+  
+  Main.cpp
+  Note: including lib: glut32.lib
+  
+Main.cpp(581): warning C4930: 'Vec3 position_camera(void)': prototyped function not called (was a variable definition intended?)
+Main.cpp(586): warning C4101: 'actor' : unreferenced local variable
+Main.cpp(582): warning C4101: 'camera_angle' : unreferenced local variable
+Main.cpp(581): warning C4930: 'Vec3 position_to(void)': prototyped function not called (was a variable definition intended?)
+  GLRenderer.cpp
+  GLImage.cpp
+  Note: including lib: glut32.lib
+  
+  Color.cpp
+  Camera.cpp
+  BVH.cpp
+  BoundingBox.cpp
+  Generating Code...
+c:\users\eliton\dropbox\eliton\universidade\computação gráfica\tbclovis\cg\main.cpp(695): warning C4700: uninitialized local variable 'scale_box' used
+c:\users\eliton\dropbox\eliton\universidade\computação gráfica\tbclovis\cg\main.cpp(700): warning C4700: uninitialized local variable 't' used
+x64\Debug\Main.obj : warning LNK4042: object specified more than once; extras ignored
+  rt.vcxproj -> C:\Users\Eliton\Dropbox\Eliton\Universidade\Computação Gráfica\TBClovis\cg\x64\Debug\rt.exe
