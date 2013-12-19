@@ -28,6 +28,19 @@ namespace Graphics
 //
 // Auxiliary functions
 //
+
+	
+//
+// Auxiliary functions
+//
+inline void
+eliminateDominant(Vec3 &v, int d)
+{
+	if (d == 0)
+		v.x = v.z;
+	else if (d == 1)
+		v.y = v.z;
+}
 __host__ __device__ inline Vec3
 triangleNormal(const Vec3& v0, const Vec3& v1, const Vec3& v2)
 {
@@ -147,7 +160,7 @@ struct __align__(16) Triangle
     * TODO: insert your code here
 	*	Ray intersect triangle
 	* **** conforme visto em sala C[] = A*B[]
-    */
+	*/
 
 	Vec3 e1 = v1 - v0;
 	Vec3 e2 = v2 - v0;
@@ -184,7 +197,6 @@ struct __align__(16) Triangle
 	}
 
 	return true;
-
   }
 
 private:

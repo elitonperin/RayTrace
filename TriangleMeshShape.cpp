@@ -33,78 +33,12 @@ TriangleMeshShape::clone() const
 }
 
 bool
-TriangleMeshShape::intersect(const Ray& ray, IntersectInfo& intersectInfo) const
+TriangleMeshShape::intersect(const Ray& , IntersectInfo& ) const
 //[]---------------------------------------------------[]
 //|  Intersect       TODO                              |
 //[]---------------------------------------------------[]
 {
-	/*
-	 
-bool TriangleMesh::intersect(const Ray& ray, IntersectInfo& info, float tmax)const
-{
-	bool hit = false;
-	float distance = tmax;
-	for(int index=0; index < numberOfTriangles; index++)
-	{
-	  const Vec3& p0 = v[triangles[index].v[0]];
-	  const Vec3& p1 = v[triangles[index].v[1]];
-	  const Vec3& p2 = v[triangles[index].v[2]];
-	  float t, b1, b2;
-	    if(intersectTri(ray, p0, p1, p2, t, b1, b2, tmax))
-	    {
-	      if(t>0.01f){
-		hit = true;
-		if(t<distance)
-		{
-		  info.index = index;
-		  info.b1 = b1;
-		  info.b2 = b2;
-		  info.t = t;
-		  distance = t;
-		}
-	      }
-	    }
-	}
-	if(hit)
-		info.model = (Model*)this;
-	return hit;
-}
-	
 
-	bool hit = false;
-	REAL distance = intersectInfo.distance;
-
-	for(int i=0; i < data.numberOfTriangles; i++)
-	{
-		const Vec3& v0 = data.vertices[data.triangles[i].v[0]];
-		const Vec3& v1 = data.vertices[data.triangles[i].v[1]];
-		const Vec3& v2 = data.vertices[data.triangles[i].v[2]];
-		
-		Vec3 * vector = new Vec3(v0, v1, v2);
-
-		REAL t, b1, b2;
-
-		
-		if()
-	    {
-	      if(t>0.01f){
-		hit = true;
-		if(t<distance)
-		{
-		  intersectInfo. = index;
-		  intersectInfo.b1 = b1;
-		  info.b2 = b2;
-		  info.t = t;
-		  distance = t;
-		}
-	      }
-	    }
-	}
-	if(hit)
-		info.model = (Model*)this;
-	return hit;
-	return false;
-	*/
 	return false;
 }
 

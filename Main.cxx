@@ -10,6 +10,9 @@
 #ifndef __MeshSweeper_h
 #include "MeshSweeper.h"
 #endif
+#ifndef __RayTracer_h
+#include "RayTracer.h"
+#endif
 
 using namespace Graphics;
 
@@ -21,6 +24,11 @@ static Camera* camera;
 static GLRenderer* renderer;
 static TriangleMeshShape* mesh;
 Transf3 MTM;
+static RayTracer *raytracer;
+GLImage *frame;
+int w, h;
+bool useGL = true;
+bool modifiedView;
 bool pause = true;
 
 // Mouse globals
@@ -42,10 +50,26 @@ printControls()
     "(+) zoom in      (-) zoom out\n"
     " Render mode controls:\n"
     " -----------======----\n"
-    " (,) wireframe    (.) smooth\n"
+    " (,) wireframe    (/) smooth\n"
     " Other controls:\n"
     " ---------------\n"
     " (p) pause rotation on/off\n");
+}
+
+inline void
+printControls2()
+{
+  printf("\n"
+    "Camera controls:\n"
+    "----------------\n"
+    "(w) pan forward (s) pan backward\n"
+    "(q) pan up      (z) pan down\n"
+    "(a) pan left    (d) pan right\n"
+    "(+) zoom in     (-) zoom out\n\n"
+    "Projection type:\n"
+    "----------------\n"
+    "(,) wireframe   (v) smooth\n"
+    "(p) perspective (o) ortographic\n\n");
 }
 
 static void
@@ -98,6 +122,114 @@ processKeys()
   }
 }
 
+
+void
+processKeys2()
+{
+  // Process keys
+  for (int i = 0; i < MAX_KEYS; i++)
+  {
+    if (!keys[i])
+      continue;
+
+    float len = camera->getDistance() * CAMERA_RES;
+
+    switch (i)
+    {
+      // Camera controls
+    case 'w':
+      camera->move(0, 0, -len);
+      modifiedView = true;
+      break;
+
+    case 's':
+      camera->move(0, 0, +len);
+      modifiedView = true;
+      break;
+
+    case 'q':
+      camera->move(0, +len, 0);
+      modifiedView = true;
+      break;
+
+    case 'z':
+      camera->move(0, -len, 0);
+      modifiedView = true;
+      break;
+
+    case 'a':
+      camera->move(-len, 0, 0);
+      modifiedView = true;
+      break;
+
+    case 'd':
+      camera->move(+len, 0, 0);
+      modifiedView = true;
+      break;
+
+    case '-':
+      camera->zoom(1.0f / ZOOM_SCALE);
+      modifiedView = true;
+      keys[i] = false;
+      break;
+
+    case '+':
+      camera->zoom(ZOOM_SCALE);
+      modifiedView = true;
+      keys[i] = false;
+      break;
+
+    case 'p':
+      camera->setProjectionType(Camera::Perspective);
+      modifiedView = true;
+      break;
+
+    case 'o':
+      camera->setProjectionType(Camera::Parallel);
+      modifiedView = true;
+      break;
+
+    case 't':
+      useGL ^= true;
+      break;
+    case ',':
+      renderer->renderMode = GLRenderer::Wireframe;
+      break;
+	case 'v':
+		renderer->renderMode = GLRenderer::Smooth;
+	  break;
+    }
+  }
+}
+
+/**
+ * Callback function responsible for rendering the scene.
+ */
+static void
+renderCallback2()
+{
+  // Process user input
+  processKeys2();
+
+  
+  // Render scene
+  if (useGL)
+    renderer->render();
+  else
+  {
+    if (frame == 0)
+      frame = new GLImage(roundupImageWidth(w), h);
+    if (modifiedView)
+    {
+      raytracer->renderImage(*frame);
+      modifiedView = false;
+    }
+    frame->draw();
+  }
+  // Swap buffers
+  glutSwapBuffers();
+}
+
 /**
  * Callback function responsible for rendering the scene.
  */
@@ -121,6 +253,23 @@ reshapeCallback(int width, int height)
   renderer->setImageSize(width, height);
   camera->setAspectRatio(REAL(width) / REAL(height));
   glViewport(0, 0, width, height);
+}
+
+/*
+ * Callback function responsible for setting the aspect ratio.
+ */
+void
+reshapeCallback2(int width, int height)
+{
+  if (w == width && h == height)
+    return;
+  if (frame != 0)
+  {
+    delete frame;
+    frame = 0;
+  }
+  renderer->setImageSize(w = width, h = height);
+  modifiedView = true;
 }
 
 /**
@@ -291,7 +440,7 @@ initGlut(int argc, char** argv)
  * --------------------------------------------------------------------------
  * The return value of glutCreateWindow() is the window identifier.
  */
-  glutCreateWindow("RGB Cube");
+  glutCreateWindow("Rt");
 /**
  * Whenever we want to take control of the processing of an event (key
  * pressed, window resized, etc.) we have to tell GLUT in advance which
@@ -315,7 +464,8 @@ initGlut(int argc, char** argv)
  *    function.
  * --------------------------------------------------------------------------
  */
-  glutDisplayFunc(renderCallback);
+  //glutDisplayFunc(renderCallback);
+  glutDisplayFunc(renderCallback2);
 /**
  * GLUT provides a way to define which function should be called when the
  * window is resized, i.e. to register a callback for recomputing the
@@ -331,7 +481,8 @@ initGlut(int argc, char** argv)
  *    correct aspect ratio when the window changes size. 
  * --------------------------------------------------------------------------
  */
-  glutReshapeFunc(reshapeCallback);
+  // glutReshapeFunc(reshapeCallback);
+  glutReshapeFunc(reshapeCallback2);
 /**
  * Now we want to tell GLUT that when the application is idle the render
  * function should be called. This causes GLUT to keep calling our rendering
@@ -350,7 +501,7 @@ initGlut(int argc, char** argv)
  * registering the function IdleCallback(), which calls the GLUT function
  * glutPostRedisplay(). This one, in its turn, calls RenderCallback().
  */
-  glutIdleFunc(idleCallback);
+  //glutIdleFunc(idleCallback);
 /**
  * Up until now we used GLUT to tell the windows system which functions we
  * wanted to do the rendering when the window needed to be repainted, which
@@ -529,6 +680,15 @@ createRGBCube()
 int
 main(int argc, char** argv)
 {
+/*
+ * Print controls.
+ */
+  printControls2();
+/**
+ * Call function for initializing GLUT.
+ */
+  initGlut(argc, argv);
+  
 /**
  * Create scene, camera, and OpenGL renderer.
  */
@@ -536,20 +696,17 @@ main(int argc, char** argv)
   camera = new Camera();
   camera->setPosition(Vec3(0, 0, 5));
   camera->setViewAngle(30);
+
+  createRGBCube();
+
   renderer = new GLRenderer(*scene, camera);
   renderer->flags.set(GLRenderer::useVertexColors);
+
+  raytracer = new RayTracer(*scene, camera);
+  
 /**
  * Create an actor and add it into the scene.
  */
-  createRGBCube();
-/**
- * Print controls.
- */
-  printControls();
-/**
- * Call function for initializing GLUT.
- */
-  initGlut(argc, argv);
 /**
  * Lets tell GLUT that we're ready to get in the application event
  * processing loop. GLUT provides a function that gets the application

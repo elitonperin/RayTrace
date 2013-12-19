@@ -173,8 +173,9 @@ RayTracer::intersect(const Ray& ray, IntersectInfo& info, REAL maxDist)
 //[]---------------------------------------------------[]
 {
   if (intersector != 0)
-    if (!intersector->intersect(ray, info, maxDist))
+    if (!intersector->intersect(ray, info, maxDist)){
       return false;
+	}
     else
     {
       numberOfHits++;
@@ -214,12 +215,13 @@ RayTracer::trace(const Ray& ray, REAL maxDist, int level, REAL weight)
 
 	REAL diference_weight = weight - getMinWeight();
 
-	if(level > maxRecursionLevel || diference_weight <= 0){
+	if(level >= maxRecursionLevel){
 		return Color::black;
 	}
-
+	IntersectInfo info;
+	if(intersect(ray, info, maxDist)){
+		return Color::blue;
+	}
 	
-	
-	
-  return Color::black;
+	return Color::black;
 }
